@@ -30,7 +30,7 @@ class HackathonGradingResult(BaseModel):
     
     # Metadata
     graded_at: datetime = Field(default_factory=datetime.utcnow)
-    grading_model: str = "claude-3-5-sonnet"
+    grading_model: str = "claude-sonnet-4-6"
 
 class HackathonContext(BaseModel):
     """Specific details about the hackathon"""

@@ -23,7 +23,7 @@ class HackathonGradingEngine:
             raise ValueError("ANTHROPIC_API_KEY not found in environment or provided")
         
         self.client = Anthropic(api_key=self.api_key)
-        self.model = "claude-3-5-sonnet-20241022"
+        self.model = "claude-sonnet-4-6"
         self.repo_analyzer = RepoAnalyzer()
         self.file_extractor = FileExtractor()
         self.stellar_verifier = StellarVerifier()
