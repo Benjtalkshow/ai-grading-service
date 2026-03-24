@@ -9,6 +9,7 @@ import tempfile
 from .prompts import build_grading_prompt
 from .services.extractor import RepoAnalyzer
 from .services.file_reader import FileExtractor
+from .services.stellar_verifier import StellarVerifier
 import httpx
 
 load_dotenv()
@@ -25,6 +26,7 @@ class HackathonGradingEngine:
         self.model = "claude-3-5-sonnet-20241022"
         self.repo_analyzer = RepoAnalyzer()
         self.file_extractor = FileExtractor()
+        self.stellar_verifier = StellarVerifier()
     
     async def grade_submission(
         self,
@@ -78,11 +80,25 @@ class HackathonGradingEngine:
             if extracted_texts:
                 extracted_content = "\n\n".join(extracted_texts)
 
-        # 3. Build prompt with evidence
+        # 3. Stellar/Blockchain Verification
+        stellar_evidence = "No on-chain verification provided."
+        stellar_data = {}
+        
+        if submission.stellar_address:
+            stellar_data["account"] = await self.stellar_verifier.verify_account(submission.stellar_address)
+        
+        if submission.contract_id:
+            stellar_data["contract"] = await self.stellar_verifier.verify_contract(submission.contract_id)
+            
+        if stellar_data:
+            stellar_evidence = json.dumps(stellar_data, indent=2)
+
+        # 4. Build prompt with evidence
         prompt = build_grading_prompt(
             submission=submission,
             repo_analysis=repo_evidence,
-            extracted_content=extracted_content
+            extracted_content=extracted_content,
+            stellar_evidence=stellar_evidence
         )
         
         # Call Claude API

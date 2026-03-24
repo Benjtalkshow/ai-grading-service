@@ -44,6 +44,7 @@ async def test_grading():
         tagline="Python library for communicating with a Stellar Horizon server",
         description="The Stellar Python SDK is a library for communicating with a Stellar Horizon server.",
         github_url="https://github.com/StellarCN/py-stellar-base.git",
+        stellar_address="GB5XDSF6IOE57KHC7N7S3T7S3A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A", # Sample testnet address
         readme_content="# py-stellar-base\n\nPython library for Stellar...",
         demo_video_url="https://youtube.com/watch?v=demo123",
         live_demo_url="https://paystream-demo.vercel.app",

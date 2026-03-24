@@ -20,6 +20,32 @@ Description: {hackathon_description}
 ## Extracted Content/Files
 {extracted_content}
 
+## Stellar/Blockchain Evidence
+{stellar_evidence}
+
+---
+
+# Stellar Expert Knowledge (Grading Guidelines)
+When evaluating Stellar/Soroban projects, pay special attention to:
+
+## 1. Soroban Smart Contract Security
+- **Missing Authorization**: Ensure `require_auth()` is used on privileged operations.
+- **Reinitialization**: Check if `initialize` functions have guards to prevent being called twice.
+- **Checked Arithmetic**: Look for `.checked_add()`, `.checked_sub()`, etc., instead of raw operators.
+- **Storage Management**: Verify correct use of `Instance`, `Persistent`, and `Temporary` storage, and check for `extend_ttl()` calls.
+- **Contract Size**: Efficiency check (aiming for under 64KB).
+
+## 2. Stellar Integration Best Practices
+- **Trustlines**: Proper handling of `op_no_trust` errors and trustline creation.
+- **Sequence Numbers**: Robust handling of transaction sequences.
+- **Simulation**: Use of transaction simulation before submission.
+- **Network Passphrase**: Correct identification of Testnet vs Mainnet.
+
+## 3. Common Pitfalls
+- Use of `#![no_std]` in contracts.
+- Proper event emission for auditable state changes.
+- Validation of external contract calls (allowlists).
+
 ---
 
 # Submission Details
@@ -101,7 +127,8 @@ You MUST respond with valid JSON in this exact structure:
 def build_grading_prompt(
     submission: SubmissionInput,
     repo_analysis: str = "No deep repository analysis available.",
-    extracted_content: str = "No additional files extracted."
+    extracted_content: str = "No additional files extracted.",
+    stellar_evidence: str = "No on-chain verification provided."
 ) -> str:
     """Build the grading prompt with submission, context, and evidence"""
     context = submission.hackathon_context
@@ -119,6 +146,7 @@ def build_grading_prompt(
         duration_hours=hack_duration,
         repo_analysis=repo_analysis,
         extracted_content=extracted_content,
+        stellar_evidence=stellar_evidence,
         team_name=submission.team_name,
         project_name=submission.project_name,
         tagline=submission.tagline,
