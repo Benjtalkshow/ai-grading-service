@@ -6,8 +6,8 @@ from app.routers import grading
 
 app = FastAPI(
     title="Boundless AI Grading Service",
-    description="AI-powered grading for Boundless submissions",
-    version="1.0.0"
+    description="Advanced AI-powered hackathon submission grading with multi-source evidence analysis, Soroban smart contract verification, and calibrated scoring",
+    version="2.0.0"
 )
 
 # CORS configuration
@@ -25,7 +25,16 @@ app.include_router(grading.router)
 @app.get("/")
 async def root():
     return {
-        "message": "Boundless AI Grading Service is running",
+        "message": "Boundless AI Grading Service v2.0 is running",
+        "version": "2.0.0",
+        "features": [
+            "Multi-language repo analysis (Rust, JS/TS, Python, Go)",
+            "Soroban smart contract security audit",
+            "On-chain Stellar account & contract verification via Soroban RPC",
+            "Evidence-based scoring with calibrated rubric",
+            "Plagiarism and integrity detection",
+            "Batch grading support",
+        ],
         "docs": "/docs"
     }
 
