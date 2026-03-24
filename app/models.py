@@ -47,6 +47,7 @@ class SubmissionInput(BaseModel):
     tagline: str
     description: str
     github_url: Optional[str] = None
+    demo_video_url: Optional[str] = None
     live_demo_url: Optional[str] = None
     file_urls: List[str] = Field(default_factory=list, description="URLs to documents (PDF, Docx) for analysis")
     stellar_address: Optional[str] = Field(None, description="Stellar wallet address for verification")
