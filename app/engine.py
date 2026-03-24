@@ -22,15 +22,13 @@ class HackathonGradingEngine:
     
     async def grade_submission(
         self,
-        submission: SubmissionInput,
-        hackathon_name: str = "Stellar Hackathon 2026"
+        submission: SubmissionInput
     ) -> HackathonGradingResult:
         """
         Grade a hackathon submission using Claude
         
         Args:
-            submission: The submission data
-            hackathon_name: Name of the hackathon
+            submission: The submission data (includes hackathon_context)
             
         Returns:
             HackathonGradingResult with scores and feedback
@@ -38,7 +36,6 @@ class HackathonGradingEngine:
         
         # Build prompt
         prompt = build_grading_prompt(
-            hackathon_name=hackathon_name,
             submission=submission
         )
         

@@ -32,6 +32,13 @@ class HackathonGradingResult(BaseModel):
     graded_at: datetime = Field(default_factory=datetime.utcnow)
     grading_model: str = "claude-3-5-sonnet"
 
+class HackathonContext(BaseModel):
+    """Specific details about the hackathon"""
+    name: str = Field(description="Name of the hackathon")
+    description: str = Field(description="Overall description and theme")
+    judging_criteria: str = Field(description="Specific judging criteria and weights")
+    duration_hours: Optional[int] = Field(default=48, description="Duration of the event")
+
 class SubmissionInput(BaseModel):
     """Input data for grading"""
     submission_id: str
@@ -43,3 +50,4 @@ class SubmissionInput(BaseModel):
     demo_video_url: Optional[str] = None
     live_demo_url: Optional[str] = None
     readme_content: Optional[str] = None
+    hackathon_context: Optional[HackathonContext] = None

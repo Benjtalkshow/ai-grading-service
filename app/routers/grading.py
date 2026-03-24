@@ -11,7 +11,6 @@ from ..models import SubmissionInput, HackathonGradingResult
 router = APIRouter(prefix="/grading", tags=["grading"])
 
 class GradeSubmissionRequest(BaseModel):
-    hackathon_name: str
     submission: SubmissionInput
 
 class GradeSubmissionResponse(BaseModel):
@@ -30,8 +29,7 @@ async def grade_hackathon_submission(request: GradeSubmissionRequest):
     try:
         engine = HackathonGradingEngine()
         result = await engine.grade_submission(
-            submission=request.submission,
-            hackathon_name=request.hackathon_name
+            submission=request.submission
         )
         
         processing_time = time.time() - start_time
