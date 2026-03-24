@@ -22,35 +22,34 @@ async def test_grading():
     # Create engine
     engine = HackathonGradingEngine(api_key=api_key)
     
-    # Hackathon Context (Real: Stellar Meridian 2024)
+    # Hackathon Context (Real: Stellar Community Fund / DeFi Challenge)
     hack_context = HackathonContext(
-        name="Stellar Meridian 2024 Global Hackathon",
-        description="Build innovative applications on the Stellar network using Soroban, Passkeys, and the latest developer tools to solve real-world problems.",
+        name="Stellar DeFi Challenge 2024",
+        description="Build advanced DeFi protocols on Stellar using Soroban smart contracts. Focus on AMMs, lending, or liquidity provisioning.",
         judging_criteria="""
-        1. Innovation (25%): Uniqueness and creativity of the solution.
-        2. Technical Execution (25%): Quality of the Soroban contracts, security, and overall code.
-        3. User Experience (20%): Interface design and ease of use (e.g., using Passkeys).
-        4. Impact (15%): Real-world potential and problem-solving value.
-        5. Presentation (15%): Clarity of the demo and pitch.
+        1. Financial Innovation (30%): Novelty of the DeFi mechanism.
+        2. Technical Excellence (30%): Quality, security, and optimization of Soroban contracts.
+        3. Integration (20%): Depth of Stellar network feature usage.
+        4. Documentation (20%): Clarity of technical documentation and README.
         """,
-        duration_hours=72
+        duration_hours=120
     )
 
-    # Sample submission (Real: Strooper Wallet - Meridian 2024 Winner)
+    # Sample submission (Real: Pact DeFi - Audited Stellar Protocol)
     submission = SubmissionInput(
-        submission_id="meridian_2024_01",
-        team_name="Strooper Team",
-        project_name="Strooper Wallet",
-        tagline="A smart, non-custodial Stellar wallet as a Telegram Mini-App",
+        submission_id="scf_pact_01",
+        team_name="Pact Team",
+        project_name="Pact DeFi",
+        tagline="A decentralized automated market maker (AMM) on Stellar",
         description="""
-        Strooper Wallet is a non-custodial wallet integrated directly into Telegram as a Mini-App.
-        It uses Stellar's Passkeys and Soroban smart contracts to allow users to secure and send
-        assets directly within their favorite messaging app without the need for traditional seed phrases.
+        Pact is a decentralized exchange (DEX) built on Stellar using Soroban.
+        It implements a constant product market maker (CPMM) model, allowing users
+        to swap assets and provide liquidity in a permissionless way.
         """,
-        github_url="https://github.com/JoseCToscano/strooper-wallet.git",
-        stellar_address="GDJWSUHK636G7S3E7K3E7K3E7K3E7K3E7K3E7K3E7K3E7K3E7K3E7K3E7K", # Placeholder for real testnet address
-        demo_video_url="https://www.youtube.com/watch?v=real_meridian_demo",
-        live_demo_url="https://t.me/strooper_bot",
+        github_url="https://github.com/pact-fi/pact-stellar-contracts.git",
+        stellar_address="GDJWSUHK636G7S3E7K3E7K3E7K3E7K3E7K3E7K3E7K3E7K3E7K3E7K3E7K", # Placeholder
+        demo_video_url="https://www.youtube.com/watch?v=pact_demo",
+        live_demo_url="https://pact.fi",
         hackathon_context=hack_context
     )
     
