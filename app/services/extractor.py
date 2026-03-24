@@ -29,14 +29,17 @@ class RepoAnalyzer:
 
         try:
             # Clone repo
+            print(f"   📥 Cloning {github_url}...")
             Repo.clone_from(github_url, clone_path, depth=1)
             
             # Run analysis
+            print(f"   📊 Analyzing code structure...")
             analysis = {
                 "cloc": self._run_cloc(clone_path),
                 "complexity": self._analyze_complexity(clone_path),
                 "readme": self._read_readme(clone_path)
             }
+            print(f"   ✅ Analysis complete.")
             
             return analysis
         except Exception as e:

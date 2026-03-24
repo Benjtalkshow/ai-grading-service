@@ -2,7 +2,6 @@ import os
 from PyPDF2 import PdfReader
 from docx import Document
 
-
 class FileExtractor:
     """Extracts text from various file types"""
     

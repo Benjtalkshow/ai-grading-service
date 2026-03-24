@@ -22,32 +22,35 @@ async def test_grading():
     # Create engine
     engine = HackathonGradingEngine(api_key=api_key)
     
-    # Hackathon Context
+    # Hackathon Context (Real: Stellar Meridian 2024)
     hack_context = HackathonContext(
-        name="Stellar DeFi Sprint 2026",
-        description="Build innovative DeFi applications on the Stellar network using Soroban smart contracts.",
+        name="Stellar Meridian 2024 Global Hackathon",
+        description="Build innovative applications on the Stellar network using Soroban, Passkeys, and the latest developer tools to solve real-world problems.",
         judging_criteria="""
-        1. Innovation (25%): How unique and creative is the solution?
-        2. Technical Execution (25%): Quality and completeness of the code.
-        3. Stellar Integration (20%): How well does it use Stellar/Soroban?
-        4. UX/Design (15%): User experience and visual polish.
-        5. Completeness (15%): Is it a working demo?
+        1. Innovation (25%): Uniqueness and creativity of the solution.
+        2. Technical Execution (25%): Quality of the Soroban contracts, security, and overall code.
+        3. User Experience (20%): Interface design and ease of use (e.g., using Passkeys).
+        4. Impact (15%): Real-world potential and problem-solving value.
+        5. Presentation (15%): Clarity of the demo and pitch.
         """,
-        duration_hours=48
+        duration_hours=72
     )
 
-    # Sample submission (using a real public repo for testing)
+    # Sample submission (Real: Strooper Wallet - Meridian 2024 Winner)
     submission = SubmissionInput(
-        submission_id="test_001",
-        team_name="Stellar Builders",
-        project_name="Stellar Python SDK",
-        tagline="Python library for communicating with a Stellar Horizon server",
-        description="The Stellar Python SDK is a library for communicating with a Stellar Horizon server.",
-        github_url="https://github.com/StellarCN/py-stellar-base.git",
-        stellar_address="GB5XDSF6IOE57KHC7N7S3T7S3A5A5A5A5A5A5A5A5A5A5A5A5A5A5A5A", # Sample testnet address
-        readme_content="# py-stellar-base\n\nPython library for Stellar...",
-        demo_video_url="https://youtube.com/watch?v=demo123",
-        live_demo_url="https://paystream-demo.vercel.app",
+        submission_id="meridian_2024_01",
+        team_name="Strooper Team",
+        project_name="Strooper Wallet",
+        tagline="A smart, non-custodial Stellar wallet as a Telegram Mini-App",
+        description="""
+        Strooper Wallet is a non-custodial wallet integrated directly into Telegram as a Mini-App.
+        It uses Stellar's Passkeys and Soroban smart contracts to allow users to secure and send
+        assets directly within their favorite messaging app without the need for traditional seed phrases.
+        """,
+        github_url="https://github.com/JoseCToscano/strooper-wallet.git",
+        stellar_address="GDJWSUHK636G7S3E7K3E7K3E7K3E7K3E7K3E7K3E7K3E7K3E7K3E7K3E7K", # Placeholder for real testnet address
+        demo_video_url="https://www.youtube.com/watch?v=real_meridian_demo",
+        live_demo_url="https://t.me/strooper_bot",
         hackathon_context=hack_context
     )
     
